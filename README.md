@@ -11,6 +11,8 @@ It is included in the same way as all webpack plugins.
 
 ### Example
 
+In this example, it simulates a situation in which, in addition to compiling the project with webpack, it is uploaded to a staging branch with git.
+
 webpack.config.js:
 
 ```js
@@ -23,26 +25,40 @@ module.exports = {
         new ExtendedBuildManagerWebpackPlugin({
             onStart: [
                 {
-                    "name": "DeleteDistFolder",
-                    "title": "Remove dist folder ...",
-                    "description": "Remove dist folder create with Angular",
-                    "distManager": [
-                        { delete: [ "./dist" ] }
-                    ]
+                    "name": "BuildSprites",
+                    "title": "Building sprites ...",
+                    "description": "Build sprites using the npm plugin",
+                    "command": "npm run build:sprites"
                 },
                 {
                     "name": "PullBranch",
-                    "title": "Move to ${env} branch folder and pull ...",
+                    "title": "Move to staging branch folder and pull ...",
                     "description": "Pull the current proyect branch in git",
-                    "command": "cd ../../${env}/alquilando-web3 && git pull"
+                    "command": "cd ../../staging/myProyect && git pull"
+                },
+                {
+                    "name": "DeleteDistBranchFolder",
+                    "title": "Remove dist branch folder ...",
+                    "description": "Remove dist branch folder",
+                    "distManager": [
+                        { delete: [ `../../staging/myProyect/dist` ] }
+                    ]
                 }
             ],
             onEnd: [
                 {
-                    "name": "BuildPrerender",
-                    "title": "Building prerender ...",
-                    "description": "Build Angular Universal pre rendering by creating static pages made in NodeJS",
-                    "command": "node ./dist/prerender.js"
+                    "name": "CopyDistFolderToBranch",
+                    "title": "Copy dist folder to branch ...",
+                    "description": "Copy dist folder to branch",
+                    "distManager": [
+                        { copy: [ { source: "./dist", destination: "../../staging/myProyect/dist" } ] }
+                    ]
+                },
+                {
+                    "name": "CommitBranch",
+                    "title": "Commit branch ...",
+                    "description": "Commit the current proyect branch in git",
+                    "command": `cd ../../staging/myProyect && git add . && git commit -m "deploy to staging"`
                 }
             ]
         })
