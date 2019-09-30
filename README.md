@@ -1,0 +1,1 @@
+# extended-build-manager-webpack-plugin
