@@ -1,0 +1,66 @@
+/demo/dist/sprites_demo.min.css
+/demo/dist/assets
+
+# dependencies
+/node_modules
+package-lock.json
+/demo/node_modules
+/demo/package-lock.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+/demo/.idea
+/demo/.project
+/demo/.classpath
+/demo/.c9/
+/demo/*.launch
+/demo/.settings/
+/demo/*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+/demo/.vscode/*
+/demo/!.vscode/settings.json
+/demo/!.vscode/tasks.json
+/demo/!.vscode/launch.json
+/demo/!.vscode/extensions.json
+
+# misc
+/.cache
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+/demo/.cache
+/demo/.sass-cache
+/demo/connect.lock
+/demo/coverage
+/demo/libpeerconnection.log
+/demo/npm-debug.log
+/demo/testem.log
+/demo/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+/demo/e2e/*.js
+/demo/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+/demo/.DS_Store
+/demo/Thumbs.db
